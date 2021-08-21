@@ -7,7 +7,9 @@
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
+            <?php echo Flasher::flash(); ?>
             <p class="login-box-msg">Sign in to start your session</p>
+
 
             <form action="../../index3.html" method="post">
                 <div class="input-group mb-3">

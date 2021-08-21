@@ -10,11 +10,15 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo PLUGINS?>fontawesome-free/css/all.min.css">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo PLUGINS?>icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?php echo DIST?>css/adminlte.min.css">
+    <!-- WaitMe -->
+    <link rel="stylesheet" href="<?php echo PLUGINS?>waitMe/waitMe.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body class="hold-transition <?php echo $d->class_type; ?>">
