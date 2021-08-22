@@ -9,6 +9,7 @@
 <!-- AdminLTE App -->
 <script src="<?php echo DIST?>js/adminlte.min.js"></script>
 <!-- JS -->
+<script src="<?php echo JS."GlobalFunctions.js"; ?>"></script>
 <script src="<?php echo JS.$d->js?>"></script>
 
 

@@ -26,6 +26,7 @@ class Parro{
          $this->init_load_config();
          $this->init_load_function();
          $this->init_autoload();
+         $this->init_csrf();
          $this->dispatch();
     }
 
@@ -39,6 +40,16 @@ class Parro{
 
         return;
      }
+
+       /**
+         * Método para crear un nuevo token de la sesión del usuario
+         *
+         * @return void
+         */
+    private function init_csrf() {
+        $csrf = new Csrf();
+        define('CSRF_TOKEN', $csrf->get_token()); // Versión 1.0.2 para uso en aplicaciones
+    }
 
      /**
       * Metodo para cargar la configuración del sistema

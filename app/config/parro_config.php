@@ -10,7 +10,10 @@
 define('ES_LOCAL', in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']));
 
 # Constante que define el uso horario
-date_default_timezone_get("America/Bogota");
+// date_default_timezone_get("America/Bogota");
+
+# Se activa si se está trabajando con PREPROS
+define('PREPROS', false);
 
 # Lenguaje por defecto
 define("LANG", "es");
@@ -22,8 +25,14 @@ define("BASEPATH", ES_LOCAL ? '/prueba_labores/' : '_PRODUCCION_');
 define("AUTH_SALT", "ParroSecurity95120408403");
 
 # Puerto y URL
-define("PORT", "80");
-define("URL", ES_LOCAL ? 'http://localhost:'.PORT."/prueba_labores/" : "_PRODUCCION_");
+// Puerto y la URL del sitio
+define('PORT'       , ''); // Puerto por defecto de Prepros <2020
+define('PROTOCOL'   , isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http"); // Detectar si está en HTTPS o HTTP
+define('HOST'       , $_SERVER['HTTP_HOST'] === 'localhost' ? (PREPROS ? 'localhost:'.PORT : 'localhost') : $_SERVER['HTTP_HOST']); // Dominio o host localhost.com tudominio.com
+define('REQUEST_URI', $_SERVER["REQUEST_URI"]); // Parametros y ruta requerida
+define('URL'        , PROTOCOL.'://'.HOST.BASEPATH); // URL del sitio
+define('CUR_PAGE'   , PROTOCOL.'://'.HOST.REQUEST_URI); // URL actual incluyendo parametros get
+
 
 # Directorios y Archivos
 define("DS", DIRECTORY_SEPARATOR);
@@ -45,7 +54,7 @@ define("VIEWS", TEMPLATES."views".DS);
 # Assets
 define("ASSETS", URL."assets/");
 define("PLUGINS", ASSETS."plugins/");
-define("IMAGES", ASSETS."images/");
+define("IMAGES", ASSETS."imagenes/");
 define("DIST", ASSETS."dist/");
 define("CSS", ASSETS."css/");
 define("JS", ASSETS."js/");
