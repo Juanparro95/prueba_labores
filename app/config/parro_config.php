@@ -78,3 +78,16 @@ define('DB_CHARSET_PROD', 'utf8'); // => Ideal para acentos en español UTF8
 define("DEFAULT_CONTROLLER", "Home");
 define("DEFAULT_ERROR", "Error");
 define("DEFAULT_METHOD", "Index");
+
+// Seguridad Tablas BD
+
+define("SECURITY_DATATABLES", "pr0y3ct0_");
+
+// Tablas de la base de datos
+
+define('DB_TABLE_USERS', SECURITY_DATATABLES.'users');
+define('DB_TABLE_BUSINESS', SECURITY_DATATABLES.'business');
+define('DB_TABLE_PROJECTS', SECURITY_DATATABLES.'projects');
+define('DB_TABLE_TICKETS', SECURITY_DATATABLES.'tickets');
+define('DB_TABLE_PROGRESS_TICKETS', SECURITY_DATATABLES.'progress_tickets');
+define('DB_TABLE_PROGRESS_COMMENTS_TICKETS', SECURITY_DATATABLES.'progress_comments_tickets');

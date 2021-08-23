@@ -147,6 +147,7 @@ function insert_inputs() {
 	$output .= '<input type="hidden" name="redirect_to" value="'.$location.'">';
 	$output .= '<input type="hidden" name="timecheck" value="'.time().'">';
 	$output .= '<input type="hidden" name="csrf" value="'.CSRF_TOKEN.'">';
+	$output .= '<input type="hidden" name="user_connect" value="'.$_SESSION["user_session"]["user"]["UserId"].'">';
 	$output .= '<input type="hidden" name="hook" value="jserp_hook">';
 	$output .= '<input type="hidden" name="action" value="post">';
 	return $output;

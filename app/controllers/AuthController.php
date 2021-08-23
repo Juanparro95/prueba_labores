@@ -1,6 +1,6 @@
 <?php
 
-class LoginController{
+class AuthController{
 
     function __construct()
     {
@@ -14,8 +14,18 @@ class LoginController{
             "js" => "Login.js",
             "class_type" => "login-page"
         ];
-
+        
         View::render("Index", $data);
+    }
+
+    public function Register(){
+      $data = [
+          "title" => "Registro a la Plataforma",
+          "js" => "Register.js",
+          "class_type" => "register-page"
+      ];
+      
+      View::render("Register", $data);
     }
 
     public function Show(){
@@ -30,26 +40,17 @@ class LoginController{
       
           // Información del usuario loggeado, simplemente se puede reemplazar aquí con un query a la base de datos
           // para cargar la información del usuario si es existente
-          $user = 
-          [
-            'id'       => 123,
-            'name'     => 'Bee Default', 
-            'email'    => 'juan.parroquiano95@gmail.com', 
-            'avatar'   => 'myavatar.jpg', 
-            'tel'      => '11223344', 
-            'color'    => '#112233',
-            'user'     => 'bee',
-            'password' => '$2y$10$LQnRpSC110mMtz5TxrHNp.c9tUEBPTiljl1n40NUCxjGAOR14WAsa'
-          ];
+          $userModel =  new UserModel;
+          $userModel -> email = $email;
+          $user = $userModel -> ValidateUser();
       
-      
-          if ($email !== $user['email'] || !password_verify($password.AUTH_SALT, $user['password'])) {
+          if ($email !== $user['Email'] || !password_verify(AUTH_SALT.$password, $user['Password'])) {
             Flasher::new('Las credenciales no son correctas.', 'danger');
             Redirect::back();
           }
       
           // Loggear al usuario
-          Auth::login($user['id'], $user);
+          Auth::login($user['UserId'], $user);
           Redirect::to('Home');
     }
 

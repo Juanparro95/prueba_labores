@@ -26,7 +26,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                Lista de todos mis proyectos
+                                Lista de todos <?php echo strtolower($d->title) ?>
                             </h3>
                         </div>
                         <!-- /.card-header -->
@@ -35,19 +35,24 @@
                                 <thead>
                                     <tr>
                                         <th>Cod</th>
-                                        <th>Nombre Proyecto</th>
+                                        <th>Ticket</th>
                                         <th>Estado</th>
-                                        <th colspan="2" style="width: 2px;"><a href="<?php echo URL."project/create"?>"
-                                                class="btn btn-info btn-block">Crear Nuevo Proyecto</a></th>
+                                        <th colspan="2" width="10px">
+                                            <form action="<?php echo URL."ticket/create" ?>" method="POST">
+                                                <input type="hidden" name="project_id" id="project_id"
+                                                    value="<?php echo $d->project_id ?>">
+                                                <button class="btn btn-info">Crear Nuevo Ticket</button>
+                                            </form>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($d->projects as $project):?>
+                                    <?php foreach($d->tickets as $ticket):?>
                                     <tr>
-                                        <td><?php echo $project->projectid ?></td>
-                                        <td><?php echo $project->name ?></td>
+                                        <td><?php echo $ticket->ticketid ?></td>
+                                        <td><?php echo $ticket->name ?></td>
                                         <td>
-                                            <?php switch($project->status){
+                                            <?php switch($ticket->status){
                                                 case 0:
                                                     echo '<small class="badge badge-danger"><i class="far fa-times"></i> Pendiente</small>';
                                                     break;
@@ -61,8 +66,9 @@
                                             } ?>
                                         </td>
                                         <td width="100px">
-                                            <a href="<?php echo URL."ticket/index/".$project->slug?>"
-                                                class="btn btn-success mb-2">Tickets</a>
+                                            <a class="btn btn-info mb-2"
+                                                href="<?php echo URL."ticket/view/".$ticket->slug ?>">Ver
+                                                Avances</a>
                                             <a href="<?php echo URL."ticket/destroy"?>"
                                                 class="btn btn-danger">Eliminar</a>
                                         </td>

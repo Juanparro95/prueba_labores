@@ -1,18 +1,17 @@
-
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
+<!-- /.content-wrapper -->
+<footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
+        <b>Version</b> 3.1.0
     </div>
-  </footer>
+</footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -22,7 +21,7 @@
 <script src="<?php echo PLUGINS?>jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+$.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
 <script src="<?php echo PLUGINS?>bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -46,9 +45,21 @@
 <script src="<?php echo PLUGINS?>overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo DIST?>js/adminlte.js"></script>
+<!-- WaitMe -->
+<script src="<?php echo PLUGINS?>waitMe/waitMe.min.js"></script>
+<!-- toastr js -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo DIST?>js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo DIST?>js/pages/dashboard.js"></script>
+<!-- JS -->
+<script>
+var url = "<?php echo URL; ?>"
+</script>
+
+<script src="<?php echo JS."GlobalFunctions.js"; ?>"></script>
+<script src="<?php echo JS.$d->js?>"></script>
 </body>
+
 </html>

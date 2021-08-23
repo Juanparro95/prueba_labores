@@ -30,15 +30,17 @@
                     <div class="card card-warning">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form id="formSaveProject">
+                            <form id="formSaveTicket">
                                 <?php echo insert_inputs(); ?>
+                                <input type="hidden" id="project_id" name="project_id"
+                                    value="<?php echo $d->project_id;?>">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <label>Nombre</label>
                                             <input type="text" class="form-control" id="name" name="name"
-                                                placeholder="Ingrese el nombre del proyecto">
+                                                placeholder="Ingrese el nombre del ticket">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -55,7 +57,7 @@
                                         <div class="form-group">
                                             <label>Descripci&oacute;n</label>
                                             <textarea class="form-control" rows="3" id="description" name="description"
-                                                placeholder="Ingrese los comentarios del proyecto"></textarea>
+                                                placeholder="Ingrese los comentarios del ticket"></textarea>
                                         </div>
                                     </div>
                                 </div>
