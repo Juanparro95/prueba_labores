@@ -23,25 +23,7 @@ class TicketController extends Controller {
         $ticketModel -> projectId = $project["projectid"];
 
         $tickets = $ticketModel -> All();
-
-        foreach($tickets as $ticket){
-            foreach($ticket as $key => $value){
-                if($key == "tickedid"){
-                    $progressTicketModel -> ticketid = $value;
-                    $count = $progressTicketModel -> Count()["conteo"];
-                    $listStatus = $progressTicketModel -> One();
-
-                    var_dump($listStatus);
-
-                    foreach($listStatus as $status){
-                        echo $status["status"];
-                    }
-                }
-            }
-        }
-
-        die;
-
+        
         $data = [
             "title" => "Mis Tickets",
             "js" => "Tickets.js",
@@ -87,6 +69,7 @@ class TicketController extends Controller {
 
     public function View($slugTicket){
         
+        
         $ticketModel = new TicketModel;
         $progressTicket = new ProgressTicketModel;
 
@@ -98,6 +81,8 @@ class TicketController extends Controller {
 
         $progressTickets = $progressTicket -> one();
 
+        ActualizarEstados($slugTicket, "slug");
+        
         $data = [
             "title" => "Ticket ",
             "js" => "TicketWatch.js",
@@ -109,7 +94,25 @@ class TicketController extends Controller {
         
     }
 
+    
+
     public function Destroy(){
+
+        $ticketModel = new TicketModel;
+        $progressTicket = new ProgressTicketModel;
+        
+        $ticketModel -> ticketId = $_POST["idTicket"];
+
+        $progressTicket -> ticketid = $_POST["idTicket"];
+
+        if($progressTicket -> Count() >= 1){
+            Flasher::new('Este ticket ya tiene tareas asignadas, no se puede eliminar', "danger");
+            Redirect::back();
+            die;
+        }
+
+        $ticketModel -> Delete();
+        Redirect::back();
 
     }
 }

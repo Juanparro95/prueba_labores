@@ -63,5 +63,31 @@ class TicketModel extends Model{
 			throw $e;
 		}
     }
+
+	public function Update(){
+        $sql = sprintf('UPDATE %s SET status = :status, updated_at = :updated_at WHERE ticketid = :ticketid', DB_TABLE_TICKETS);
+        $data = [
+                    'status' => $this->status,
+                    'ticketid'    => $this->ticketid,
+                    'updated_at'    => $this->updated_at,
+                ];
+
+        try {
+            return (parent::query($sql, $data)) ? true : false;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+	public function Delete(){
+        $sql = sprintf('DELETE FROM %s WHERE ticketid = :ticketid', DB_TABLE_TICKETS);
+        $data = [ ':ticketid'    => $this->ticketid];
+
+        try {
+            return (parent::query($sql, $data)) ? true : false;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
     
 }

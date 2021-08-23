@@ -27,12 +27,11 @@ class ProgressTicketModel extends Model{
 
 	}
 
-    public function One(){
+    public function One($tickedIdOp = null){
 
-        $sql = sprintf('SELECT progressticketid, name, created_at, status FROM %s WHERE ticketid = :ticketid ORDER BY created_at DESC', DB_TABLE_PROGRESS_TICKETS);
-		echo $this->ticketId;
+        $sql = sprintf('SELECT ticketid, progressticketid, name, created_at, status FROM %s WHERE ticketid = :ticketid ORDER BY created_at DESC', DB_TABLE_PROGRESS_TICKETS);
 		try {
-			return ($rows = parent::query($sql, [':ticketid' => $this->ticketId])) ? $rows : false;
+			return ($rows = parent::query($sql, [':ticketid' => ($tickedIdOp != null) ? $tickedIdOp : $this->ticketId])) ? $rows : false;
 		} catch (Exception $e) {
 			throw $e;
 		}

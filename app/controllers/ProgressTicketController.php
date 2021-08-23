@@ -66,6 +66,8 @@ class ProgressticketController extends Controller {
             $progressTicket -> status = $_POST['checked'];
             $progressTicket -> updated_at = now();
 
+            ActualizarEstados($_POST["idTicket"], "id");
+
             if(!$progressTicket -> Update()) json_build(500);
             
             echo json_build(201, null, "Tarea actualizada con &eacute;xito.");

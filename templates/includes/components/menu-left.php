@@ -38,7 +38,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Inicio
@@ -51,18 +51,14 @@
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Proyectos
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="Logout" class="nav-link">
+                    <a href="<?php echo URL."logout" ?>" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Cerrar Sesi&oacute;n
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
                         </p>
                     </a>
                 </li>

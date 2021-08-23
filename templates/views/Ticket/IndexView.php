@@ -28,6 +28,7 @@
                             <h3 class="card-title">
                                 Lista de todos <?php echo strtolower($d->title) ?>
                             </h3>
+                            <?php echo Flasher::flash();?>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -60,7 +61,7 @@
                                                     echo '<small class="badge badge-warning"><i class="far fa-clock"></i> En Progreso</small>';
                                                     break;
                                                 case 2:
-                                                    echo '<small class="badge badge-sucess"><i class="far fa-check"></i> Terminado</small>';
+                                                    echo '<small class="badge badge-success"><i class="far fa-check"></i> Terminado</small>';
                                                     break;
 
                                             } ?>
@@ -69,8 +70,12 @@
                                             <a class="btn btn-info mb-2"
                                                 href="<?php echo URL."ticket/view/".$ticket->slug ?>">Ver
                                                 Avances</a>
-                                            <a href="<?php echo URL."ticket/destroy"?>"
-                                                class="btn btn-danger">Eliminar</a>
+                                            <form action="<?php echo URL."ticket/destroy"?>" method="POST">
+                                                <?php echo insert_inputs(); ?>
+                                                <input type="hidden" name="idTicket" id="idTicket"
+                                                    value="<?php echo $ticket->ticketid; ?>">
+                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     <?php endforeach ?>
